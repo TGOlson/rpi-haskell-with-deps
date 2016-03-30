@@ -1,39 +1,18 @@
-# rpi-haskell
+# rpi-haskell-classy
 
-Haskell installation on top of `rpi-raspbian` base image.
+[rpi-haskell](https://github.com/tgolson/rpi-haskell-classy) image with the [classy-prelude](http://hackage.haskell.org/package/classy-prelude) package installed.
 
-#### Versions
+Building dependencies on the `rpi-raspbian` base image can be very slow - this image starts you off with a base set of useful packages to speed up development.
 
-```
-$ ghc --version
-The Glorious Glasgow Haskell Compilation System, version 7.10.3
-```
+Built with stack snapshot resolver version lts-5.10. Packages are installed globally in `/root/.stack`.
 
-```
-$ cabal --version
-cabal-install version 1.22.6.0
-using version 1.22.5.0 of the Cabal library
-```
+#### Build Details
+- [Source Repository](https://github.com/tgolson/rpi-haskell-classy)
+- [DockerHub](https://hub.docker.com/r/tgolson/rpi-haskell-classy/)
 
-```
-$ stack --version
-Version 1.0.0 arm
-```
+#### Notes
 
-Notes:
-* Maybe need to run a registration image first:
+* To run this on an architecture other than ARM, you will need to run a registration image first:
 ```
-$ docker run --rm --privileged multiarch/qemu-user-static:register
+$ docker run --rm --privileged multiarch/qemu-user-static:register --reset
 ```
-
-* May want to make an rpi-haskell machine w/ better compute than default
-  * TODO: test/research to see if this really works
-```
-$ docker-machine create \
-  -d virtualbbox \
-  --virtualbox-cpu-count "4"
-  --virtualbox-disk-size "409600" # 400gb
-  --virtualbox-memory "8192" # 8gb
-```
-
-* May need to set `system-ghc: true` in stack.yaml
