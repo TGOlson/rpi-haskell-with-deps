@@ -3,12 +3,39 @@ sudo: required
 services:
   - docker
 
+# before_install:
+#   - docker build -t rpi-haskell-classy .
+#   - docker tag rpi-haskell-classy tgolson/rpi-haskell-classy:latest
+#   - docker tag rpi-haskell-classy tgolson/rpi-haskell-classy:7.10.3
+#
+# script:
+#   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+#   - docker push tgolson/rpi-haskell-classy:latest
+#   - docker push tgolson/rpi-haskell-classy:7.10.3
+
 before_install:
-  - docker build -t rpi-haskell-classy .
-  - docker tag rpi-haskell-classy tgolson/rpi-haskell-classy:latest
-  - docker tag rpi-haskell-classy tgolson/rpi-haskell-classy:7.10.3
+  - ls
+  - pwd
+
+matrix:
+  include:
+    - services:
+        - docker
+      script:
+        - echo "~~~~~~~~~ SCRIPT 1"
+        - docker pull scratch
+    - services:
+        - docker
+      script:
+        - echo "~~~~~~~~~ SCRIPT 2"
+        - docker pull debian:jessie
+    - services:
+        - docker
+      script:
+        - echo "~~~~~~~~~ SCRIPT 3"
+        - docker pull haskell:7.10.3
 
 script:
-  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker push tgolson/rpi-haskell-classy:latest
-  - docker push tgolson/rpi-haskell-classy:7.10.3
+  - echo "DONNNNNN???"
+  - docker images
+  - docker ps
