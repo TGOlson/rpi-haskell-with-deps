@@ -12,7 +12,7 @@ Built with stack snapshot resolver version lts-5.10. Packages are installed glob
 
 #### Notes
 
-* To run this on an architecture other than ARM, you will need to run a registration image first:
+* To run this image on an architecture other than ARM, you will need to run a registration image first:
 ```
 $ docker run --rm --privileged multiarch/qemu-user-static:register --reset
 ```
