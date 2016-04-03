@@ -5,7 +5,13 @@ services:
 
 before_install:
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - travis_wait 50 docker build -t rpi-haskell-classy .
+  - mkdir stack-cache
+  - docker pull tgolson/rpi-haskell
+  - docker run --rm --privileged multiarch/qemu-user-static:register --reset
+  - travis_wait docker run -v stack-cache:/root/.stack tgolson/rpi-haskell stack install transformers -j4
+  - travis_wait docker run -v stack-cache:/root/.stack tgolson/rpi-haskell stack install basic-prelude -j4
+  - travis_wait docker run -v stack-cache:/root/.stack tgolson/rpi-haskell stack install containers -j4
+  - docker build -t rpi-haskell-classy .
   - docker tag rpi-haskell-classy tgolson/rpi-haskell-classy:latest
   - docker tag rpi-haskell-classy tgolson/rpi-haskell-classy:7.10.3
 
