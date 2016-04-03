@@ -8,15 +8,18 @@ before_install:
   - mkdir stack-cache
   - docker pull tgolson/rpi-haskell
   - docker run --rm --privileged multiarch/qemu-user-static:register --reset
-  - docker run -v stack-cache:/root/.stack tgolson/rpi-haskell stack install transformers -j4
-  - docker run -v stack-cache:/root/.stack tgolson/rpi-haskell stack install transformers -j4
-  - docker run -v stack-cache:/root/.stack tgolson/rpi-haskell stack install transformers -j4
-  # - travis_wait docker run -v stack-cache:/root/.stack tgolson/rpi-haskell stack install basic-prelude -j4
-  # - travis_wait docker run -v stack-cache:/root/.stack tgolson/rpi-haskell stack install containers -j4
-  # - docker build -t rpi-haskell-classy .
-  # - docker tag rpi-haskell-classy tgolson/rpi-haskell-classy:latest
-  # - docker tag rpi-haskell-classy tgolson/rpi-haskell-classy:7.10.3
-#
-# script:
-#   - docker push tgolson/rpi-haskell-classy:latest
-#   - docker push tgolson/rpi-haskell-classy:7.10.3
+  - travis_wait docker run -v stack-cache:/root/.stack tgolson/rpi-haskell stack install transformers -j4
+  - travis_wait docker run -v stack-cache:/root/.stack tgolson/rpi-haskell stack install vector -j4
+  - travis_wait docker run -v stack-cache:/root/.stack tgolson/rpi-haskell stack install containers -j4
+  - travis_wait docker run -v stack-cache:/root/.stack tgolson/rpi-haskell stack install text -j4
+  - travis_wait docker run -v stack-cache:/root/.stack tgolson/rpi-haskell stack install bytestring -j4
+  - travis_wait docker run -v stack-cache:/root/.stack tgolson/rpi-haskell stack install exceptions -j4
+  - travis_wait docker run -v stack-cache:/root/.stack tgolson/rpi-haskell stack install mtl -j4
+  - travis_wait docker run -v stack-cache:/root/.stack tgolson/rpi-haskell stack install basic-prelude -j4
+  - docker build -t rpi-haskell-classy .
+  - docker tag rpi-haskell-classy tgolson/rpi-haskell-classy:latest
+  - docker tag rpi-haskell-classy tgolson/rpi-haskell-classy:7.10.3
+
+script:
+  - docker push tgolson/rpi-haskell-classy:latest
+  - docker push tgolson/rpi-haskell-classy:7.10.3

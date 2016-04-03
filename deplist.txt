@@ -1,14 +1,15 @@
-basic-prelude
 transformers
+vector
 containers
 text
 bytestring
-vector
+exceptions
+mtl
+basic-prelude
 unordered-containers
 hashable
 lifted-base
 mono-traversable
-exceptions
 semigroups
 vector-instances
 time
@@ -18,7 +19,6 @@ enclosed-exceptions
 ghc-prim
 stm
 primitive
-mtl
 bifunctors
 mutable-containers
 dlist
