@@ -1,14 +1,23 @@
-# rpi-haskell-classy
+# rpi-haskell-with-deps
 
-[rpi-haskell](https://github.com/tgolson/rpi-haskell-classy) image with the [classy-prelude](http://hackage.haskell.org/package/classy-prelude) package installed.
-
-Building dependencies on the `rpi-raspbian` base image can be very slow - this image starts you off with a base set of useful packages to speed up development.
-
-Built with stack snapshot resolver version lts-5.10. Packages are installed globally in `/root/.stack`.
+Uses a base [rpi-haskell image](https://github.com/tgolson/rpi-haskell) with useful Haskell packages installed. Generally targeted towards building applications on the Raspberry Pi.
 
 #### Build Details
-- [Source Repository](https://github.com/tgolson/rpi-haskell-classy)
-- [DockerHub](https://hub.docker.com/r/tgolson/rpi-haskell-classy/)
+- [Source Repository](https://github.com/tgolson/rpi-haskell-with-deps)
+- [DockerHub](https://hub.docker.com/r/tgolson/rpi-haskell-with-deps/)
+
+#### Versions
+
+Latest version is built using GHC 8.0.1 and Stack resolver lts-7.24. Packages are installed globally in `/root/.stack`.
+
+See [image tags](https://hub.docker.com/r/tgolson/rpi-haskell-with-deps/tags/) for all available versions. Version tag refers to GHC version.
+
+Current installed dependencies:
+
+```
+$ stack exec ghc-pkg list
+# TODO
+```
 
 #### Notes
 

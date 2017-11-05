@@ -1,3 +1,3 @@
-FROM tgolson/rpi-haskell:7.10.3
+FROM tgolson/rpi-haskell:8.0.1
 
 RUN stack install classy-prelude
